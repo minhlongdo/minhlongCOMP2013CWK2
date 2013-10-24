@@ -48,11 +48,11 @@
 	$company = $_POST['company'];
         $date = date("Y-m-d");
         // Insert data
-        $sql_insert = "INSERT INTO registration_tbl (name, company, email, date) 
+        $sql_insert = "INSERT INTO registration_tbl (name, company_name, email, date) 
                    VALUES (?,?,?,?)";
         $stmt = $conn->prepare($sql_insert);
         $stmt->bindValue(1, $name);
-        $stmt->bindValue(':company_name', $company);
+        $stmt->bindValue(2, $company);
 	$stmt->bindValue(3, $email);
         $stmt->bindValue(4, $date);
         $stmt->execute();
