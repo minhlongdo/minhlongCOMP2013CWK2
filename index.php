@@ -45,11 +45,11 @@
     try {
         $name = $_POST['name'];
         $email = $_POST['email'];
-	$company = $_POST['company_name'];
+	$company = $_POST['company'];
         $date = date("Y-m-d");
         // Insert data
         $sql_insert = "INSERT INTO registration_tbl (name, company_name, email, date) 
-                   VALUES (?,?,?)";
+                   VALUES (?,?,?,?)";
         $stmt = $conn->prepare($sql_insert);
         $stmt->bindValue(1, $name);
         $stmt->bindValue(2, $company);
