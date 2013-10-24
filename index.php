@@ -52,7 +52,7 @@
                    VALUES (?,?,?,?)";
         $stmt = $conn->prepare($sql_insert);
         $stmt->bindValue(1, $name);
-        $stmt->bindValue(2, $company_name);
+        $stmt->bindValue(':company_name', $company);
 	$stmt->bindValue(3, $email);
         $stmt->bindValue(4, $date);
         $stmt->execute();
