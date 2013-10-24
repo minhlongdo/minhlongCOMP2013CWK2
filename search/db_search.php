@@ -41,3 +41,15 @@
 	catch(Exception $e) {
 		die(var_dump($e);
 	}
+	if(!empty($_POST)) {
+	try {
+       		$name = $_GET['name'];
+        	$email = $_GET['email'];
+		// Search database for data
+	}
+	catch(Exception e) {
+		die(var_dump($e);
+	}
+?>
+</body>
+</html>
