@@ -53,7 +53,7 @@
         $stmt = $conn->prepare($sql_insert);
         $stmt->bindValue(1, $name);
         $stmt->bindValue(2, $company);
-	$stmt->bindValue(3, email);
+	$stmt->bindValue(3, $email);
         $stmt->bindValue(4, $date);
         $stmt->execute();
     }
