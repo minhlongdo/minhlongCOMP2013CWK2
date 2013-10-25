@@ -41,44 +41,45 @@
         die(var_dump($e));
     }
 
-    // Insert registration info
-    if(!empty($_POST)) {
-    try {
-        $name = $_POST['name'];
-        $email = $_POST['email'];
-        $date = date("Y-m-d");
-        // Insert data
-        $sql_insert = "INSERT INTO registration_tbl (name, email, date) 
-                   VALUES (?,?,?)";
-        $stmt = $conn->prepare($sql_insert);
-        $stmt->bindValue(1, $name);
-        $stmt->bindValue(2, $email);
-        $stmt->bindValue(3, $date);
-        $stmt->execute();
-    }
-    catch(Exception $e) {
-        die(var_dump($e));
-    }
-    echo "<h3>Your're registered!</h3>";
-    }
+    // starting to get data
+
+    $name=$_POST['name'];
+    $email=$_POST['email'];
+    $company=$_POST['company'];
+
     // Retrieve data
-    $sql_select = "SELECT * FROM registration_tbl";
-    $stmt = $conn->query($sql_select);
-    $registrants = $stmt->fetchAll(); 
-    if(count($registrants) > 0) {
-        echo "<h2>People who are registered:</h2>";
-        echo "<table>";
-        echo "<tr><th>Name</th>";
-        echo "<th>Email</th>";
-        echo "<th>Date</th></tr>";
-        foreach($registrants as $registrant) {
-            echo "<tr><td>".$registrant['name']."</td>";
-            echo "<td>".$registrant['email']."</td>";
-            echo "<td>".$registrant['date']."</td></tr>";
-        }
-        echo "</table>";
-    } else {
-        echo "<h3>No one is currently registered.</h3>";
+    if(empty($_POST('name')) && empty($_POST('email')) && empty($_POST('company'))) {
+   	echo "<h3>Please enter keyword.</h3>";
+    }
+    else {
+	try {
+		sql_query_search = ("SELECT * FROM registration_tbl WHERE name = '$name' || email = '$email' || company_name = '$company'");
+		$stmt = $conn->prepare($sql_query_search);
+		$search_result = $stmt->execute();
+
+		if(count($search_result) > 0) {
+			echo "<h2>Search result.</h2>";
+			echo "<table>";
+			echo "<tr><th>Name</th>";
+			echo "<th>Company name</th>";
+			echo "<th>Email</th>";
+			echo "<th>Date</th>";
+			foreach($search_result as $found) {
+				echo "<tr><td>".$found['name']."</td>";
+				echo "<td>".$found['Company_Name']."</td>";
+				echo "<td>".$found['email']."</td>";
+				echo "<td>".$found['date']."</td></tr>";
+			}
+			echo "</table>";
+		}
+		else {
+			echo "<h3>No result.</h3>";
+		}
+	}
+	catch(Exception $e) {
+		die(var_dump($e));
+	}
+	
     }
 ?>
 </body>
