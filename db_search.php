@@ -60,6 +60,10 @@
 				echo "<th>Email</th>";
 				echo "<th>Data</th></tr>";
 			}
+		}
+		catch(Exception $e) {
+			die(var_dump($e));
+		}
 }
 ?>
 </body>
