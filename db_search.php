@@ -54,7 +54,7 @@
     }
     else {
 	try {
-		sql_query_search = ("SELECT * FROM registration_tbl WHERE name = '$name' || email = '$email' || company_name = '$company'");
+		$sql_query_search = ("SELECT * FROM registration_tbl WHERE name = '$name' || email = '$email' || company_name = '$company'");
 		$stmt = $conn->prepare($sql_query_search);
 		$search_result = $stmt->execute();
 
@@ -80,7 +80,6 @@
 	catch(Exception $e) {
 		die(var_dump($e));
 	}
-	
     }
 ?>
 </body>
