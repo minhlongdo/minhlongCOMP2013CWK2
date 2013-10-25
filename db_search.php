@@ -44,9 +44,14 @@
 	}
 	
 	if(!empty($_POST)) {
-		$name = $_POST['name'];
-		$email = $_POST['email'];
-		$company = $_POST['company'];
+		try {
+			$name = $_POST['name'];
+			$email = $_POST['email'];
+			$company = $_POST['company'];
+		}
+		catch(Exception $e) {
+			die(var_dump($e));
+		}
 	}
 ?>
 </body>
