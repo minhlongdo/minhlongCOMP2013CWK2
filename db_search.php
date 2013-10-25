@@ -48,6 +48,11 @@
 			$name = $_POST['name'];
 			$email = $_POST['email'];
 			$company = $_POST['company'];
+			
+			//retrieve data
+			$sql_search = "SELECT * from registration_tbl where name = "$name" || email = "$email" || company = "$company"";
+			$stmt = $conn->query($sql_search);
+			$found_registrants = $stmt->fetchAll();
 		}
 		catch(Exception $e) {
 			die(var_dump($e));
