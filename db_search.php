@@ -47,7 +47,7 @@
 		try {
 			$name = $_POST['name'];
 			$email = $_POST['email'];
-			company = $_POST['company'];
+			$company = $_POST['company'];
 			// search database
 			$sql_search = "SELECT * from registration_tbl where name = "$name" || email = "$email" || company = "$company"";
 			$stmt = $conn->query(sql_search);
