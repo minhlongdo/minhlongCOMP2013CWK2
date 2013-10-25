@@ -42,6 +42,10 @@
 	catch(Exception $e) {
 		die(var_dump($e));
 	}
+	
+	if(!empty($_POST)) {
+		
+	}
 ?>
 </body>
 </html>
