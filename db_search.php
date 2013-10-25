@@ -49,7 +49,7 @@
 			$email = $_POST['email'];
 			$company = $_POST['company'];
 			// search database
-			$sql_search = "SELECT * from registration_tbl where name = "$name" || email = "$email" || company = "$company"";
+			$sql_search = "SELECT * from registration_tbl where name = "$name" || email = "$email" || company = "$company" ";
 			$stmt = $conn->query($sql_search);
 			$search_result = $stmt->fetchAll();
 			if(count($search_result) > 0) {
@@ -59,21 +59,7 @@
 				echo "<th>Company name</th>";
 				echo "<th>Email</th>";
 				echo "<th>Data</th></tr>";
-				foreach($search_result as $found) {
-					echo "<tr><td>".$found['name']."</td>";
-					echo "<td>".found['Company_name']."</td>";
-					echo "<td>".found['email']."</td>";
-					echo "<td>".found['date']."</td></tr>";
-				}
-				echo "</table>";
 			}
-			else {
-				echo "<h3>Nothing found</h3>";
-			} 
-		}
-		catch(Exception $e) {
-			die(var_dump($e));
-		}
 }
 ?>
 </body>
