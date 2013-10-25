@@ -43,9 +43,9 @@
 		die(var_dump($e));
 	}
 	
-	$name = $_POST['name'];
-	$email = $_POST['email'];
-	$company = $_POST['company'];
+	$name = $_GET['name'];
+	$email = $_GET['email'];
+	$company = $_GET['company'];
 			
 	//retrieve data
 	$sql_search = "SELECT * from registration_tbl where name = "$name" || email = "$email" || company = "$company"";
