@@ -50,7 +50,7 @@
 			$company = $_POST['company'];
 			// search database
 			$sql_search = "SELECT * from registration_tbl where name = "$name" || email = "$email" || company = "$company"";
-			$stmt = $conn->query(sql_search);
+			$stmt = $conn->query($sql_search);
 			$search_result = $stmt->fetchAll();
 			if(count($search_result) > 0) {
 				echo "<h2>Search result</h2>";
