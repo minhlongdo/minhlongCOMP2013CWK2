@@ -43,17 +43,12 @@
 		die(var_dump($e));
 	}
 	
-	try {
-		$name = $_POST['name'];
-		$email = $_POST['email'];
-		$company = $_POST['company'];
+	$name = $_POST['name'];
+	$email = $_POST['email'];
+	$company = $_POST['company'];
 			
-		//retrieve data
-		$sql_search = "SELECT * from registration_tbl where name = "$name" || email = "$email" || company = "$company"";
-	}
-	catch(Exception $e) {
-		die(var_dump($e));
-	}
+	//retrieve data
+	$sql_search = "SELECT * from registration_tbl where name = "$name" || email = "$email" || company = "$company"";
 ?>
 </body>
 </html>
