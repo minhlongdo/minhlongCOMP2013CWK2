@@ -43,44 +43,48 @@
     }
 
     // starting to get data
+    try {
+  	  $name=$_POST['name'];
+  	  $email=$_POST['email'];
+  	  $company=$_POST['company'];
 
-    $name=$_POST['name'];
-    $email=$_POST['email'];
-    $company=$_POST['company'];
-
-    // Retrieve data
-    if(empty($_POST('name')) && empty($_POST('email')) && empty($_POST('company'))) {
+  	  // Retrieve data
+   	 if(empty($_POST('name')) && empty($_POST('email')) && empty($_POST('company'))) {
    	echo "<h3>Please enter keyword.</h3>";
-    }
-    else {
-	try {
-		$sql_query_search = ("SELECT * FROM registration_tbl WHERE name = '$name' || email = '$email' || company_name = '$company'");
-		$stmt = $conn->prepare($sql_query_search);
-		$search_result = $stmt->execute();
+  	  }
+  	  else {
+		try {
+			$sql_query_search = ("SELECT * FROM registration_tbl WHERE name = '$name' || email = '$email' || company_name = '$company'");
+			$stmt = $conn->prepare($sql_query_search);
+			$search_result = $stmt->execute();
 
-		if(count($search_result) > 0) {
-			echo "<h2>Search result.</h2>";
-			echo "<table>";
-			echo "<tr><th>Name</th>";
-			echo "<th>Company name</th>";
-			echo "<th>Email</th>";
-			echo "<th>Date</th>";
-			foreach($search_result as $found) {
-				echo "<tr><td>".$found['name']."</td>";
-				echo "<td>".$found['Company_Name']."</td>";
-				echo "<td>".$found['email']."</td>";
-				echo "<td>".$found['date']."</td></tr>";
+			if(count($search_result) > 0) {
+				echo "<h2>Search result.</h2>";
+				echo "<table>";
+				echo "<tr><th>Name</th>";
+				echo "<th>Company name</th>";
+				echo "<th>Email</th>";
+				echo "<th>Date</th>";
+				foreach($search_result as $found) {
+					echo "<tr><td>".$found['name']."</td>";
+					echo "<td>".$found['Company_Name']."</td>";
+					echo "<td>".$found['email']."</td>";
+					echo "<td>".$found['date']."</td></tr>";
+				}
+				echo "</table>";
 			}
-			echo "</table>";
+			else {
+				echo "<h3>No result.</h3>";
+			}
 		}
-		else {
-			echo "<h3>No result.</h3>";
+		catch(Exception $e) {
+			die(var_dump($e));
 		}
-	}
-	catch(Exception $e) {
-		die(var_dump($e));
-	}
-    }
+   	 }
+}
+catch(Exception $e) {
+	die(var_dump($e));
+}
 ?>
 </body>
 </html>
