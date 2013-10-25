@@ -17,6 +17,7 @@
 </head>
 <body>
 <h1>Search here!</h1>
+<a href="http://minhlongcomp2013.azurewebsites.net/index.php">Register here</a>
 <p>Fill in your name and email address, then click <strong>Submit</strong> to search.</p>
 <form method="post" action="index.php" enctype="multipart/form-data" >
       Name  <input type="text" name="name" id="name"/></br>
