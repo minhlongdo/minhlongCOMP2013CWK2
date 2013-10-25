@@ -33,6 +33,47 @@
 	$user = "bae74695f9d00f";
 	$pwd = "1fe84b0f";
 	$db = "minhlonAxoP7zDDA";
+
+	// Connect to database.
+	try {
+		$conn = new PDO("mysql:host=$host;dbname=$db", $user, $pwd);
+		$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+	}
+	catch(Exception $e) {
+		die(var_dump($e));
+	}
+	//Query database
+	if(!empty($_POST)) {
+		try {
+			$name = $_POST['name'];
+			$email = $_POST['email'];
+			company = $_POST['company'];
+			// search database
+			$sql_search = "SELECT * from registration_tbl where name = "$name" || email = "$email" || company = "$company"";
+			$stmt = $conn->query(sql_search);
+			$search_result = $stmt->fetchAll();
+			if(count($search_result) > 0) {
+				echo "<h2>Search result</h2>";
+				echo "<table>";
+				echo "<tr><th>Name</th>";
+				echo "<th>Company name</th>";
+				echo "<th>Email</th>";
+				echo "<th>Data</th></tr>";
+				foreach($search_result as $found) {
+					echo "<tr><td>".$found['name']."</td>";
+					echo "<td>".found['Company_name']."</td>";
+					echo "<td>".found['email']."</td>";
+					echo "<td>".found['date']."</td></tr>";
+				}
+				echo "</table>";
+			}
+			else {
+				echo "<h3>Nothing found</h3>";
+			} 
+		}
+		catch(Exception $e) {
+			die(var_dump($e));
+		}
 ?>
 </body>
 </html>
