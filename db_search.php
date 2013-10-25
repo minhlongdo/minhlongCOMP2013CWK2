@@ -23,9 +23,15 @@
       Name  <input type="text" name="name" id="name"/></br>
       Company <input type="text" name="company" id="company"/></br>
       Email <input type="text" name="email" id="email"/></br>
-      <input type="submit" name="submit" value="Submit" />
+      <input type="submit" name="submit" value="search" />
 </form>
 <?php
+	if($company == "" && $name == "" && email == "")
+	{
+		echo "<p>You forgot to enter a search term</p>";
+		exit;
+	}
+	
 	// DB connection info
 	//TODO: Update the values for $host, $user, $pwd, and $db
 	//using the values you retrieved earlier from the portal.
@@ -42,16 +48,10 @@
 	catch(Exception $e) {
 		die(var_dump($e));
 	}
-	
-	if(!empty($_POST)) {
-		$name = $_POST['name'];
-		$email = $_POST['email'];
-		$company = $_POST['company'];
-	}
-			
-	//retrieve data
-	//$sql_search = "SELECT * from registration_tbl where name = "$name" || email = "$email" || company = "$company"";
-	//$stmt = $conn->query($sql_search);
+
+	$data = mysql_query("SELECT * from registraion_tbl where name = "$name" || company_name = "$company" || email = "$email"");
+
+	// display result
 ?>
 </body>
 </html>
