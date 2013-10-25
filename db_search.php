@@ -42,29 +42,6 @@
 	catch(Exception $e) {
 		die(var_dump($e));
 	}
-	//Query database
-	if(!empty($_POST)) {
-		try {
-			$name = $_POST['name'];
-			$email = $_POST['email'];
-			$company = $_POST['company'];
-			// search database
-			$sql_search = "SELECT * from registration_tbl where name = "$name" || email = "$email" || company = "$company" ";
-			$stmt = $conn->query($sql_search);
-			$search_result = $stmt->fetchAll();
-			if(count($search_result) > 0) {
-				echo "<h2>Search result</h2>";
-				echo "<table>";
-				echo "<tr><th>Name</th>";
-				echo "<th>Company name</th>";
-				echo "<th>Email</th>";
-				echo "<th>Data</th></tr>";
-			}
-		}
-		catch(Exception $e) {
-			die(var_dump($e));
-		}
-}
 ?>
 </body>
 </html>
