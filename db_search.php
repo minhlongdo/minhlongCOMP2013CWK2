@@ -50,7 +50,8 @@
 	}
 			
 	//retrieve data
-	//$sql_search = "SELECT * from registration_tbl where name = "$name" || email = "$email" || company = "$company"";
+	$sql_search = "SELECT * from registration_tbl where name = "$name" || email = "$email" || company = "$company"";
+	$stmt = $conn->query($sql_search);
 ?>
 </body>
 </html>
