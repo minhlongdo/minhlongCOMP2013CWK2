@@ -49,7 +49,7 @@
 		die(var_dump($e));
 	}
 
-	$data = mysql_query("SELECT * from registraion_tbl where name = "$name" || company_name = "$company" || email = "$email"");
+	//$data = mysql_query("SELECT * from registraion_tbl WHERE name = "$name" || company_name = "$company" || email = "$email"");
 
 	// display result
 ?>
