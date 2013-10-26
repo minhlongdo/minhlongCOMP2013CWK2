@@ -25,13 +25,7 @@
       Email <input type="text" name="email" id="email"/></br>
       <input type="submit" name="submit" value="search" />
 </form>
-<?php
-	if($company == "" && $name == "" && email == "")
-	{
-		echo "<p>You forgot to enter a search term</p>";
-		exit;
-	}
-	
+<?php	
 	// DB connection info
 	//TODO: Update the values for $host, $user, $pwd, and $db
 	//using the values you retrieved earlier from the portal.
