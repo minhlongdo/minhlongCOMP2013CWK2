@@ -46,6 +46,17 @@
         $name = $_POST['name'];
         $email = $_POST['email'];
 	$company = $_POST['company'];
+
+	// Retrieve data
+	$sql_select = "SELECT * FROM registration_tbl WHERE name = '$name' or email = '$email' or Company_name = '$company'";
+	$stmt = $conn->query($sql_select);
+	$registrants = $stmt->fetchAll();
+	if(count(registrants) > 0) {
+		echo "Found people.";
+	} else {
+		echo "No search result."
+	}
+
         //$date = date("Y-m-d");
         // Insert data
         // $sql_insert = "INSERT INTO registration_tbl (name, Company_Name, email, date) 
