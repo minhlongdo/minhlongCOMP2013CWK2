@@ -42,11 +42,34 @@
     if(!empty($_POST)) {
     try {
         $search = $_POST['search'];
+	$sql_select = "SELECT 8 FROM registration_tbl WHERE name LIKE '%$search%'";
+	$stmt = $conn->prepare($sql_select);
+	$stmt->execute();
+	$registrants = $stmt->fetchAll();
+	if(count(registrants) > 0) {
+		echo "<h2>Search result:</h2>";
+		echo "<table>";
+		echo "<tr><th>Name</th>";
+       	 	echo "<th>Company name</th>";
+       		echo "<th>Email</th>";
+        	echo "<th>Date</th></tr>";
+        	foreach($registrants as $registrant) {
+            		echo "<tr><td>".$registrant['name']."</td>";
+            		echo "<td>".$registrant['Company_Name']."</td>";
+            		echo "<td>".$registrant['email']."</td>";
+            		echo "<td>".$registrant['date']."</td></tr>";
+	echo "</table>";
+	}
+	else
+	{
+		echo "<h2>No Result.</h2>"
+	}
     }
     catch(Exception $e) {
         die(var_dump($e));
     }
     }
+/*
     // Retrieve data
     $sql_select = "SELECT * FROM registration_tbl WHERE name like '%$search%'";
     $stmt = $conn->prepare($sql_select);
@@ -69,6 +92,7 @@
     } else {
         echo "<h3>No one is currently registered.</h3>";
     }
+*/
 ?>
 </body>
 </html>
