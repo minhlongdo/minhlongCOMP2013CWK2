@@ -48,7 +48,7 @@
     }
     }
     // Retrieve data
-    $sql_select = "SELECT * FROM registration_tbl WHERE search like '%$name%'";
+    $sql_select = "SELECT * FROM registration_tbl WHERE name like '%$search%'";
     $stmt = $conn->prepare($sql_select);
     $stmt->execute();
     $registrants = $stmt->fetchAll();
