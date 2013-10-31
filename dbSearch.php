@@ -52,7 +52,7 @@
     }
     }
     // Retrieve data
-    $sql_select = "SELECT * FROM registration_tbl WHERE name = '$name' or email = '$email' or company_name = '$company'";
+    $sql_select = "SELECT * FROM registration_tbl WHERE name like '%$name%' or email like '%email%' or company_name like '%$company%'";
     $stmt = $conn->prepare($sql_select);
     $stmt->execute();
     $registrants = $stmt->fetchAll();
