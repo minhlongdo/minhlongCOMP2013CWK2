@@ -53,7 +53,7 @@
     }
     // Retrieve data
     $sql_select = "SELECT * FROM registration_tbl WHERE name = '$name' or email = '$email' or company_name = '$company'";
-    $stmt = $conn->query($sql_select);
+    $stmt = $conn->prepare($sql_select);
     $registrants = $stmt->fetchAll();
     if(count($registrants) > 0) {
         echo "<h2>Search result:</h2>";
