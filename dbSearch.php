@@ -19,9 +19,7 @@
 <h1>Search here!</h1> <a href="http://minhlongcomp2013.azurewebsites.net/index.php">Register here</a>
 <p>Fill in your name and email address, then click <strong>Search</strong> .</p>
 <form method="post" action="dbSearch.php" enctype="multipart/form-data" >
-      Name  <input type="text" name="name" id="name"/></br>
-      Company <input type="text" name="company" id="company"/></br>
-      Email <input type="text" name="email" id="email"/></br>
+      Search  <input type="text" name="search" id="search"/></br>
       <input type="submit" name="submit" value="Submit" />
 </form>
 <?php
@@ -43,16 +41,14 @@
     // Insert registration info
     if(!empty($_POST)) {
     try {
-        $name = $_POST['name'];
-        $email = $_POST['email'];
-	$company = $_POST['company'];
+        $search = $_POST['search'];
     }
     catch(Exception $e) {
         die(var_dump($e));
     }
     }
     // Retrieve data
-    $sql_select = "SELECT * FROM registration_tbl WHERE name like '%$name%' or email like '%email%' or company_name like '%$company%'";
+    $sql_select = "SELECT * FROM registration_tbl WHERE search like '%$name%'";
     $stmt = $conn->prepare($sql_select);
     $stmt->execute();
     $registrants = $stmt->fetchAll();
